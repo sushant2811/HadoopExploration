@@ -8,13 +8,13 @@
 
 import sys
 
-webpage = '/assets/js/the-associates.js'
+IP = '10.99.99.186'
 
 for line in sys.stdin:
     data = line.strip().split()
     
     if len(data) == 10:
-	if data[6] == webpage:
-           print "{0}\t{1}".format(webpage, 1)
+	if data[0] == IP:
+           print "{0}\t{1}".format(IP, 1)
 	else:
-	   print "{0}\t{1}".format(webpage, 0)	
+	   print "{0}\t{1}".format(IP, 0)	
