@@ -1,0 +1,23 @@
+Useful Hadoop commands and troubleshooting tricks
+
+Compiled from Udacity's course #ud617: (Intro to Hadoop and MapReduce)
+
+Can test mappers and reducers on a small test data as follows:
+
+$head -50 ../data/purchases.txt > testfile
+
+$cat testfile | ./mapper.py (testing the mapper)
+
+$cat testfile | ./mapper.py | sort | ./reducer.py (testing the entire pipeline)
+
+To put the purchases.txt file on the hadoop system in a directory called myInput do
+$hadoop fs -put ../data/purchases.txt myInput
+
+To run MapReduce on HDFS on the virtual machine:
+$hs mapper.py reducer.py myInput myOutput
+
+hs is the alias used for the clumpsy hadoop jar command on the virtual machince. 
+
+To look at the output of the MapReduce:  
+$hadoop fs -cat myOutput/part-00000
+
