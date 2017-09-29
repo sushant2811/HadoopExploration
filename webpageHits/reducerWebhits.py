@@ -20,14 +20,9 @@ for line in sys.stdin:
 
     thisKey, thisHit = data_mapped
 
-    if oldKey and oldKey != thisKey:
-        print oldKey, "\t", hitsTotal
-        oldKey = thisKey;
-        hitsTotal = 0
-
     oldKey = thisKey
-    hitsTotal += float(thisHit)
+    hitsTotal += int(thisHit)
 
-if oldKey != None:
-    print oldKey, "\t", hitsTotal
+print oldKey, "\t", hitsTotal 
+
 
