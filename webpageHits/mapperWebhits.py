@@ -8,8 +8,13 @@
 
 import sys
 
+webpage = '/assets/js/the-associates.js'
+
 for line in sys.stdin:
     data = line.strip().split()
     
     if len(data) == 10:
-        print "{0}\t{1}".format(data[6], 1)
+	if data[6] == webpage:
+           print "{0}\t{1}".format(webpage, 1)
+	else:
+	   print "{0}\t{1}".format(webpage, 0)	
