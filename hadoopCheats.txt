@@ -21,3 +21,17 @@ hs is the alias used for the clumpsy hadoop jar command on the virtual machince.
 To look at the output of the MapReduce:  
 $hadoop fs -cat myOutput/part-00000
 
+
+---- Combiners --- 
+
+The idea is to do as much reduction as possible locally before sending the data 
+to the reducers. 
+
+Using combiners reducer get significantly less input records and have to shuffle 
+less bytes (as can be seen from the job tracker page)
+
+While it doesn't (usually) lead to time savings on a single node pseudo-distributed 
+cluster run in a VM, in real world it could save a lot of network traffic. 
+(Though this intermediate step can apparently introduce some complications)
+
+
