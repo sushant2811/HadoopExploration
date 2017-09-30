@@ -34,4 +34,30 @@ While it doesn't (usually) lead to time savings on a single node pseudo-distribu
 cluster run in a VM, in real world it could save a lot of network traffic. 
 (Though this intermediate step can apparently introduce some complications)
 
+* To use combiners:---
 
+To use combiner, add a new shortcut command to your VM. In the terminal window type
+
+gedit ~/.bashrc
+
+In the editor that opens, find a function definition "run_mapreduce". 
+Copy the contents and create a new function (within the same file), let's say 
+"run_mapreduce_with_combiner". Add the following "-combiner $2" right after "-reducer $2".
+
+So, we have:
+run_mapreduce_with_combiner() {
+	hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper $1 -reducer $2 -combiner $2 -file $1 -file $2 -input $3 -output $4
+} 
+
+And at the end of the file, add a line for the alias:
+
+alias hsc=run_mapreduce_with_combiner
+(or whatever that function name). 
+
+Now save the file and exit the gedit program. Run the following in the terminal:
+
+source ~/.bashrc
+This will reload the configuration file you just edited, and your new alias should be ready to use.
+
+To run the Hadoop job using combiner do
+$hsc mapper_mean_sales.py reducer_mean_sales.py myinput outputMeanCombiner
