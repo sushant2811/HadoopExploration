@@ -2,6 +2,7 @@ Useful Hadoop commands and troubleshooting tricks
 
 Compiled from Udacity's course #ud617: (Intro to Hadoop and MapReduce)
 
+----
 Can test mappers and reducers on a small test data as follows:
 
 $head -50 ../data/purchases.txt > testfile
@@ -20,6 +21,12 @@ hs is the alias used for the clumpsy hadoop jar command on the virtual machince.
 
 To look at the output of the MapReduce:  
 $hadoop fs -cat myOutput/part-00000
+
+To get the file from Hadoop cluster into your local machine do 
+$hadoop fs -get myOutput/part-00000 myOutputfile.txt
+
+The file will be get stored in the local machine in the directory whereever the 
+terminal is pointing to
 
 
 ---- Combiners --- 
