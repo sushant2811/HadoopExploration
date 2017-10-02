@@ -13,3 +13,5 @@ and webpage hits data respectively.
 
 The MapReduceDesignPatterns folder has examples of things like calculating mean, 
 filtering data, and picking the top 10 entries with given criterion. 
+
+To do: 1) Do the inverted index exercise and the exercise for combine datasets
